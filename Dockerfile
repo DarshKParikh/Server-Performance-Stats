@@ -11,4 +11,4 @@ COPY server-stats.sh /app/server-stats.sh
 
 RUN chmod +x /app/server-stats.sh
 
-ENTRYPOINT ["/app/server-stats.sh"]
+ENTRYPOINT ["bash", "/app/server-stats.sh"]
