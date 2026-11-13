@@ -1,7 +1,14 @@
 https://roadmap.sh/projects/server-stats
 
-
 # 🖥️ Server Performance Stats
+
+
+[![Server Monitor CI](https://github.com/DarshKParikh/Server-Performance-Stats/actions/workflows/ci.yml/badge.svg)](https://github.com/DarshKParikh/Server-Performance-Stats/actions/workflows/ci.yml)
+
+![Bash](https://img.shields.io/badge/Bash-4EAA25?logo=gnubash&logoColor=white)
+![Docker](https://img.shields.io/badge/Docker-2496ED?logo=docker&logoColor=white)
+![Linux](https://img.shields.io/badge/Linux-FCC624?logo=linux&logoColor=black)
+
 
 A lightweight **Linux Server Monitoring Tool** built using Bash that provides insights into system resource utilisation and performance.
 
