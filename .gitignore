@@ -1,0 +1,6 @@
+# Generated monitoring data
+*.csv
+*.log
+
+# macOS system files
+.DS_Store
