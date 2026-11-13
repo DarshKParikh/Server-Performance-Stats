@@ -1,0 +1,43 @@
+
+name: Server Monitor CI
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Install dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y shellcheck procps
+
+      - name: Check Bash syntax
+        run: bash -n server-stats.sh
+
+      - name: Run ShellCheck
+        run: shellcheck server-stats.sh
+
+      - name: Test monitoring output
+        run: |
+          bash server-stats.sh > output.txt
+          grep -q "CPU Usage:" output.txt
+          grep -q "Memory Usage:" output.txt
+          grep -q "Disk Usage:" output.txt
+
+      - name: Test CSV logging
+        run: |
+          bash server-stats.sh --log metrics.csv
+          test "$(wc -l < metrics.csv)" -eq 2
+
+      - name: Build Docker image
+        run: docker build -t server-monitor .
+
+      - name: Test Docker container
+        run: docker run --rm server-monitor
